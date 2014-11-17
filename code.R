@@ -287,5 +287,5 @@ testDat  = convertToUpset( Titanic )
 dir.create("data/testR_titanic")
 
 # write files for testing
-write.csv(testDat$df, file = "data/testR/testR.csv")
-writeLines(jsonlite::toJSON(testDat$json,auto_unbox=T),con="data/testR/testR.json")
+write.csv(testDat$df, file = "data/testR_titanic/testR.csv")
+writeLines(jsonlite::toJSON(testDat$json,auto_unbox=T),con="data/testR_titanic/testR.json")
