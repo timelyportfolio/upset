@@ -198,5 +198,75 @@ testDat  = convertToUpset3( HairEyeColor )
 dir.create("data/testR3")
 
 # write files for testing
-write.csv(testDat$df, file = "data/testR2/testR.csv")
-writeLines(jsonlite::toJSON(testDat$json,auto_unbox=T),con="data/testR2/testR.json")
+write.csv(testDat$df, file = "data/testR3/testR.csv")
+writeLines(jsonlite::toJSON(testDat$json,auto_unbox=T),con="data/testR3/testR.json")
+
+
+
+
+
+# this function unlike the first 2 will pass a frequency for each intersection
+convertToUpset4 <- function( dat ){
+  # force to data.frame
+  dat = data.frame( dat )
+  
+  # break each factor into a column name so a very wide format
+  columnNames = unlist(lapply(
+    names(dat)
+    ,function(x){
+      if(is.factor(dat[[x]])) paste0(x,"_",levels(dat[[x]]))
+    }
+  ))
+  
+  # just for testing
+  # since last (sex) is true/false
+  # remove that columnName
+  columnNames = columnNames[-length(columnNames)]
+  
+  # now we need to get 1 or 0 for the intersections
+  upset_df <- structure(
+    as.data.frame(
+      matrix(
+        unlist(apply(
+          dat
+          ,MARGIN=1
+          ,function(x){
+            c(as.numeric(unname(is.element(
+              columnNames
+              , paste0(names(x)[-length(x)],"_",x[-length(x)])
+            ))),x[length(x)])
+          }
+        ))
+        ,ncol=length(columnNames) + 1,byrow=T
+      )
+    )
+    ,names=c(columnNames,"freq")
+  )  
+  
+  # set up json meta
+  upset_json = list(
+    file = "data/testR4/testR.csv"
+    ,name = "R Upsetted Table"
+    ,header = 0
+    ,separator = ","
+    ,skip = 0
+    ,meta = rbind(
+      data.frame(type = "id", index = 0, name = "Name")
+      ,data.frame(type = "integer", index = length(columnNames) + 1, name = "Freq")
+    )
+    ,sets = data.frame(
+      format = "binary", start = 1, end = length(columnNames)
+    )
+  )
+  
+  return(list(df = upset_df,json = upset_json))  
+}
+
+# convert data
+testDat  = convertToUpset4( HairEyeColor )
+
+dir.create("data/testR4")
+
+# write files for testing
+write.csv(testDat$df, file = "data/testR4/testR.csv")
+writeLines(jsonlite::toJSON(testDat$json,auto_unbox=T),con="data/testR4/testR.json")
