@@ -15,6 +15,9 @@
 
     "data/test/rand.json",
     "data/test/test.json",
-    "data/test/test_2set.json"
+    "data/test/test_2set.json",
+    "data/testR/testR.json",
+    "data/testR2/testR.json",
+    "data/testR3/testR.json"
 ]
 
