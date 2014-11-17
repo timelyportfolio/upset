@@ -270,3 +270,22 @@ dir.create("data/testR4")
 # write files for testing
 write.csv(testDat$df, file = "data/testR4/testR.csv")
 writeLines(jsonlite::toJSON(testDat$json,auto_unbox=T),con="data/testR4/testR.json")
+
+
+
+
+
+
+
+
+
+
+##### try with titanic
+# convert data
+testDat  = convertToUpset( Titanic )
+
+dir.create("data/testR_titanic")
+
+# write files for testing
+write.csv(testDat$df, file = "data/testR/testR.csv")
+writeLines(jsonlite::toJSON(testDat$json,auto_unbox=T),con="data/testR/testR.json")
