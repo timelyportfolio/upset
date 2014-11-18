@@ -60,6 +60,7 @@ rebalStats %>>%
           ,sets = data.frame(
             format = "binary", start = 1, end = ncol(.) - 1
           )
+          ,description = "see post http://timelyportfolio.blogspot.com/2014/03/interactive-discovery-of-research.html"
       )
     )
   ) -> jopm
