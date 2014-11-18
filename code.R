@@ -283,7 +283,8 @@ writeLines(jsonlite::toJSON(testDat$json,auto_unbox=T),con="data/testR4/testR.js
 ##### try with titanic
 # convert data
 testDat  = convertToUpset( Titanic )
-
+testDat$json$name = "R Titanic"
+testDat$json$file = "data/testR_titanic/testR.csv"
 dir.create("data/testR_titanic")
 
 # write files for testing

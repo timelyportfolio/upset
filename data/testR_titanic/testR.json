@@ -1,1 +1,1 @@
-{"file":"data/testR/testR.csv","name":"R Titanic","header":0,"separator":",","skip":0,"meta":[{"type":"id","index":0,"name":"Name"}],"sets":[{"format":"binary","start":1,"end":10}]}
+{"file":"data/testR_titanic/testR.csv","name":"R Titanic","header":0,"separator":",","skip":0,"meta":[{"type":"id","index":0,"name":"Name"}],"sets":[{"format":"binary","start":1,"end":10}]}
