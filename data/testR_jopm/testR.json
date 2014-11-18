@@ -1,0 +1,1 @@
+{"file":"data/testR_jopm/testR.csv","name":"R JOPM Paper","header":0,"separator":",","skip":0,"meta":[{"type":"id","index":0,"name":"Name"},{"type":"float","index":8,"name":"Return"}],"sets":[{"format":"binary","start":1,"end":7}]}
